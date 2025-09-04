@@ -34,7 +34,7 @@ Una API RESTful para gestión de tareas construida con **FastAPI**, **PostgreSQL
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/tu-usuario/todoApi-PT.git
+git clone https://github.com/CJPD00/todoApi-PT.git
 cd todoApi-PT
 
 # Crear entorno virtual
