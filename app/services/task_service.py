@@ -39,6 +39,12 @@ async def delete_task(task_id: int, db: AsyncSession, user: User):
     await db.commit()
 
 
-async def list_tasks(db: AsyncSession, user: User) -> Sequence[Task]:
-    result = await db.execute(select(Task).where(Task.owner_id == user.id))
+async def list_tasks(
+    db: AsyncSession, user: User, page: int = 1, items_per_page: int = 10
+) -> Sequence[Task]:
+    skip = (page - 1) * items_per_page
+    limit = items_per_page
+    result = await db.execute(
+        select(Task).where(Task.owner_id == user.id).offset(skip).limit(limit)
+    )
     return result.scalars().all()

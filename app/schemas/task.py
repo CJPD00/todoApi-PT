@@ -11,14 +11,15 @@ class TaskBase(BaseModel):
 class TaskCreate(TaskBase):
     pass
 
+    model_config = {"extra": "forbid"}
+
 
 class TaskUpdate(BaseModel):
     title: str | None = None
     description: str | None = None
     state: Literal["pendiente", "completado"] | None = None
 
-    class Config:
-        extra = "forbid"
+    model_config = {"extra": "forbid"}
 
 
 class TaskOut(TaskBase):

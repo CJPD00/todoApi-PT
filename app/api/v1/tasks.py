@@ -26,9 +26,12 @@ async def create(
 
 @router.get("/", response_model=list[TaskOut])
 async def list_all(
-    db: AsyncSession = Depends(get_db), user: User = Depends(get_current_user)
+    page: int = 1,
+    items_per_page: int = 10,
+    db: AsyncSession = Depends(get_db),
+    user: User = Depends(get_current_user),
 ):
-    return await list_tasks(db, user)
+    return await list_tasks(db, user, page, items_per_page)
 
 
 @router.get("/{task_id}", response_model=TaskOut)
@@ -56,4 +59,4 @@ async def delete(
     db: AsyncSession = Depends(get_db),
     user: User = Depends(get_current_user),
 ):
-     await delete_task(task_id, db, user)
+    await delete_task(task_id, db, user)
