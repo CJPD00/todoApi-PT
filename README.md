@@ -78,6 +78,7 @@ uv run python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ## 📚 Documentación
 
 Puedes encontrar la documentación completa en [Swagger](http://localhost:8000/docs)
+localhost:puerto/docs
 
 ---
 
